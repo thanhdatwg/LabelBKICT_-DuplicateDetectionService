@@ -33,6 +33,6 @@ export class ClassificationServiceConfig {
     }
 }
 
-export const EXPORT_SERVICE_CONFIG_TOKEN = token<ClassificationServiceConfig>(
+export const CLASSIFICATION_SERVICE_CONFIG_TOKEN = token<ClassificationServiceConfig>(
     "ClassificationServiceConfig"
 );

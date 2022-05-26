@@ -1,6 +1,6 @@
 import { Container } from "brandi";
 import { APPLICATION_CONFIG_TOKEN } from "./application";
-import { ClassificationServiceConfig, EXPORT_SERVICE_CONFIG_TOKEN } from "./config";
+import { ClassificationServiceConfig, CLASSIFICATION_SERVICE_CONFIG_TOKEN } from "./config";
 import { DATABASE_CONFIG_TOKEN } from "./database";
 import { DISTRIBUTED_CONFIG_TOKEN } from "./distributed";
 import { GRPC_SERVER_CONFIG } from "./grpc_service";
@@ -21,53 +21,53 @@ export * from "./config";
 
 export function bindToContainer(container: Container): void {
     container
-        .bind(EXPORT_SERVICE_CONFIG_TOKEN)
+        .bind(CLASSIFICATION_SERVICE_CONFIG_TOKEN)
         .toInstance(ClassificationServiceConfig.fromEnv)
         .inSingletonScope();
     container
         .bind(LOG_CONFIG_TOKEN)
-        .toInstance(() => container.get(EXPORT_SERVICE_CONFIG_TOKEN).logConfig)
+        .toInstance(() => container.get(CLASSIFICATION_SERVICE_CONFIG_TOKEN).logConfig)
         .inSingletonScope();
     container
         .bind(DATABASE_CONFIG_TOKEN)
         .toInstance(
-            () => container.get(EXPORT_SERVICE_CONFIG_TOKEN).databaseConfig
+            () => container.get(CLASSIFICATION_SERVICE_CONFIG_TOKEN).databaseConfig
         )
         .inSingletonScope();
     container
         .bind(KAFKA_CONFIG_TOKEN)
         .toInstance(
-            () => container.get(EXPORT_SERVICE_CONFIG_TOKEN).kafkaConfig
+            () => container.get(CLASSIFICATION_SERVICE_CONFIG_TOKEN).kafkaConfig
         )
         .inSingletonScope();
     container
         .bind(IMAGE_SERVICE_CONFIG_TOKEN)
         .toInstance(
-            () => container.get(EXPORT_SERVICE_CONFIG_TOKEN).imageServiceConfig
+            () => container.get(CLASSIFICATION_SERVICE_CONFIG_TOKEN).imageServiceConfig
         )
         .inSingletonScope();
     container
         .bind(POLYP_DETECTION_SERVICE_CONFIG_TOKEN)
         .toInstance(
-            () =>container.get(EXPORT_SERVICE_CONFIG_TOKEN).polypDetectionServiceConfig
+            () =>container.get(CLASSIFICATION_SERVICE_CONFIG_TOKEN).polypDetectionServiceConfig
         )
         .inSingletonScope();
     container
         .bind(GRPC_SERVER_CONFIG)
         .toInstance(
-            () => container.get(EXPORT_SERVICE_CONFIG_TOKEN).grpcServerConfig
+            () => container.get(CLASSIFICATION_SERVICE_CONFIG_TOKEN).grpcServerConfig
         )
         .inSingletonScope();
     container
         .bind(DISTRIBUTED_CONFIG_TOKEN)
         .toInstance(
-            () => container.get(EXPORT_SERVICE_CONFIG_TOKEN).distributedConfig
+            () => container.get(CLASSIFICATION_SERVICE_CONFIG_TOKEN).distributedConfig
         )
         .inSingletonScope();
     container
         .bind(APPLICATION_CONFIG_TOKEN)
         .toInstance(
-            () => container.get(EXPORT_SERVICE_CONFIG_TOKEN).applicationConfig
+            () => container.get(CLASSIFICATION_SERVICE_CONFIG_TOKEN).applicationConfig
         )
         .inSingletonScope();
 }
